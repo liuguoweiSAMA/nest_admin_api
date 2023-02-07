@@ -12,7 +12,7 @@ export class CreateWorkspaceDto {
 
     @IsNotEmpty({ message: '屏幕方向不能为空' })
     // 屏幕方向
-    screenOrientation: object
+    screenOrientation: number
 
     @IsNotEmpty({ message: '游戏类型不能为空' })
     //游戏类型

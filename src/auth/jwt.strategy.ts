@@ -7,6 +7,7 @@ import { Injectable } from '@nestjs/common'
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy, 'jwt') {
   constructor(configService: ConfigService, private prisma: PrismaService) {
+    // console.log(ExtractJwt.fromAuthHeaderAsBearerToken())
     super({
       //解析用户提交的Bearer Token header数据
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
