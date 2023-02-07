@@ -9,10 +9,31 @@ datasource db {
   provider = "mysql"
   url      = env("DATABASE_URL")
 }
+
 model user {
-  id       Int     @id @default(autoincrement()) @db.UnsignedInt
-  name     String  @unique
-  password String
-  role     String?
-  createdAt  DateTime @default(now())
+  id        Int      @id @default(autoincrement()) @db.UnsignedInt
+  name      String   @unique
+  password  String
+  role      String?
+  createdAt DateTime @default(now())
+}
+
+model workspace {
+  id                Int      @id @default(autoincrement()) @db.UnsignedInt
+  // 素材列表
+  materials         String
+  // 选择主播
+  anchor            String
+  // 屏幕方向
+  screenOrientation Int
+  //游戏类型
+  getGameType       Int
+  // 创作方向
+  creationType      Int
+  //具体要求
+  content           String
+  //用户上传的id
+  uid               Int
+  createdAt         DateTime @default(now())
+  updateAt          DateTime @updatedAt
 }
