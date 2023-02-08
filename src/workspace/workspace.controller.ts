@@ -6,6 +6,7 @@ import { Auth } from '@/decorators/auth.decorator'
 @Controller('workspace')
 export class WorkspaceController {
   constructor(private readonly workspaceService: WorkspaceService) { }
+
   @Auth()
   @Post()
   create(@Body() createWorkspaceDto: CreateWorkspaceDto) {

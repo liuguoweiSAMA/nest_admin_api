@@ -1,25 +1,14 @@
 import { PrismaService } from '@/prisma/prisma.service'
-import { Injectable,applyDecorators, UseGuards } from '@nestjs/common'
+import { Injectable } from '@nestjs/common'
 import { CreateWorkspaceDto } from './dto/create-workspace.dto'
 import { UpdateWorkspaceDto } from './dto/update-workspace.dto'
-import { Authid } from '../decorators/auth.id'
-import { AuthGuard } from '@nestjs/passport'
+import { User } from '../decorators/getUser'
 @Injectable()
 export class WorkspaceService {
-  constructor(private prisma: PrismaService){}
+  constructor(private prisma: PrismaService) { }
   async create(createWorkspaceDto: CreateWorkspaceDto) {
-    
-  //  const user =  UseGuards(AuthGuard('jwt'))
-  // let a = applyDecorators(UseGuards(AuthGuard('jwt'), Authid))
-  //  console.log(a)
-  //  return a
-  //  console.log(user)
-    // console.log(createWorkspaceDto)
-    // const addCreate = await this.prisma.workspace.create({
-    //   data:{
-        
-    //   }
-    // })
+    console.log(111)
+    console.log(await User())
     return 'This action adds a new workspace'
   }
 
