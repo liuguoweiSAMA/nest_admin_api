@@ -10,7 +10,7 @@ export class Validate extends ValidationPipe {
       messagesInfo[error.property] = Object.values(error.constraints)[0]
       if (!message) message = Object.values(error.constraints)[0]
     })
-    throw new HttpException({ code: 201, message, status: 'error' }, HttpStatus.UNPROCESSABLE_ENTITY)
+    throw new HttpException({ code: 201, message, status: 'error' }, HttpStatus.OK)
     // return []
   }
 }

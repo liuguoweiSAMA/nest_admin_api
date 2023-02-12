@@ -24,9 +24,12 @@ export class AuthService {
       },
     })
     if (!(await verify(user.password, dto.password))) {
-      throw new BadGatewayException('密码输入错误')
+      return '密码输入错误'
+      // throw new HttpException({ code: 201, message, status: 'error' }, HttpStatus.OK)
+      // throw new BadGatewayException('密码输入错误')
+    } else {
+      return this.token(user)
     }
-    return this.token(user)
   }
   private async token({ name, id }) {
     return {
