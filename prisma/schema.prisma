@@ -16,6 +16,19 @@ model user {
   password  String
   role      String?
   createdAt DateTime @default(now())
+  words     Word[]
+}
+
+model recommend {
+  id  Int    @id @default(autoincrement()) @db.UnsignedInt
+  url String
+  img String
+}
+
+model videoList {
+  id   Int    @id @default(autoincrement()) @db.UnsignedInt
+  type String
+  url  String
 }
 
 model workspace {
@@ -36,4 +49,17 @@ model workspace {
   uid               Int
   createdAt         DateTime @default(now())
   updateAt          DateTime @updatedAt
+}
+
+model Word {
+  id   Int   @id @default(autoincrement()) @db.UnsignedInt
+  user user? @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  title    String
+  content  String
+  wordType String
+
+  userId    Int      @db.UnsignedInt
+  createdAt DateTime @default(now())
+  updateAt  DateTime @updatedAt
 }
