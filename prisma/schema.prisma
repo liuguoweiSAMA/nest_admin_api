@@ -63,3 +63,31 @@ model Word {
   createdAt DateTime @default(now())
   updateAt  DateTime @updatedAt
 }
+
+model CatType {
+  id        Int      @id @default(autoincrement()) @db.UnsignedInt
+  name      String   @unique
+  createdAt DateTime @default(now())
+  Pet       Pet[]
+}
+
+model Pet {
+  id          Int    @id @default(autoincrement()) @db.UnsignedInt
+  // 名字
+  name        String
+  // 图片
+  img         String
+  // 描述
+  description String
+  // 毛长
+  minhair     String
+  maxhair     String
+  // 平均最大体重
+  weight      Int
+
+  CatType   CatType @relation(fields: [catTypeId], references: [id])
+  catTypeId Int     @db.UnsignedInt
+
+  createdAt DateTime @default(now())
+  updateAt  DateTime @updatedAt
+}
