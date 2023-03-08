@@ -7,6 +7,7 @@ export class UploadController {
     @Post('image')
     @image()
     image(@UploadedFile() file: Express.Multer.File) {
+        // console.log(file)
         return this.uploadService.create(file)
         // return {
         //     url: `http://localhost:3000/${file.path}`,
