@@ -21,8 +21,26 @@ export class PetService {
     return '新增成功'
   }
 
-  async findAll() {
-    const catList = await this.prisma.pet.findMany({})
+  async findAll(body) {
+    console.log(body)
+    const data = {
+      weight: body.weight && +body.weight,
+      catTypeId: body.catTypeId && +body.catTypeId,
+    }
+    if (!data.weight) {
+      delete data.weight
+    }
+    if (!data.catTypeId) {
+      delete data.catTypeId
+    }
+    const catList = await this.prisma.pet.findMany({
+      where: {
+        name: {
+          contains: body.name,
+        },
+        ...data,
+      },
+    })
     return catList
   }
 

@@ -12,7 +12,14 @@ export class CattypeService {
     })
     return '添加成功'
   }
-
+  async findType() {
+    const catList = await this.prisma.catType.findMany({
+      include: {
+        Pet: true,
+      },
+    })
+    return catList
+  }
   async findAll() {
     const catList = await this.prisma.catType.findMany({})
     return catList
