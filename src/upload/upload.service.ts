@@ -10,7 +10,7 @@ export class UploadService {
     async create(file: Express.Multer.File) {
         console.log(file)
         const accessKey = this.config.get('accessKey')
-        const secretKey = this.config.get('accessKey')
+        const secretKey = this.config.get('secretKey')
         const options = {
             scope: 'cat-np',
         }
